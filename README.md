@@ -16,6 +16,11 @@ STDOUT.  Check the README there for more details and usages.
 3.  `yarn install`
 4.  `yarn start`
 
+OR
+
+1. Install Docker & Docker-compose
+2. `docker-compose up -d`
+
 ## Settings
 
 * `host` - the host the server runs on (default localhost)
