@@ -22,7 +22,7 @@ config.storage.port = process.env.STORAGE_PORT || config.storage.port || '6379';
 if (config.logging) {
   try {
     winston.remove(winston.transports.Console);
-  } catch(e) {
+  } catch (e) {
     /* was not present */
   }
 
@@ -38,7 +38,9 @@ if (config.logging) {
 // build the store from the config on-demand - so that we don't load it
 // for statics
 if (!config.storage) {
-  config.storage = { type: 'file' };
+  config.storage = {
+    type: 'file'
+  };
 }
 if (!config.storage.type) {
   config.storage.type = 'file';
@@ -50,8 +52,7 @@ if (process.env.REDISTOGO_URL && config.storage.type === 'redis') {
   var redisClient = require('redis-url').connect(process.env.REDISTOGO_URL);
   Store = require('./lib/document_stores/redis');
   preferredStore = new Store(config.storage, redisClient);
-}
-else {
+} else {
   Store = require('./lib/document_stores/' + config.storage.type);
   preferredStore = new Store(config.storage);
 }
@@ -76,14 +77,21 @@ var path, data;
 for (var name in config.documents) {
   path = config.documents[name];
   data = fs.readFileSync(path, 'utf8');
-  winston.info('loading static document', { name: name, path: path });
+  winston.info('loading static document', {
+    name: name,
+    path: path
+  });
   if (data) {
-    preferredStore.set(name, data, function(cb) {
-      winston.debug('loaded static document', { success: cb });
+    preferredStore.set(name, data, function (cb) {
+      winston.debug('loaded static document', {
+        success: cb
+      });
     }, true);
-  }
-  else {
-    winston.warn('failed to load static document', { name: name, path: path });
+  } else {
+    winston.warn('failed to load static document', {
+      name: name,
+      path: path
+    });
   }
 }
 
@@ -110,19 +118,19 @@ if (config.rateLimits) {
 }
 
 // first look at API calls
-app.use(route(function(router) {
+app.use(route(function (router) {
   // get raw documents - support getting with extension
-  router.get('/raw/:id', function(request, response) {
+  router.get('/raw/:id', function (request, response) {
     var key = request.params.id.split('.')[0];
     var skipExpire = !!config.documents[key];
     return documentHandler.handleRawGet(key, response, skipExpire);
   });
   // add documents
-  router.post('/documents', function(request, response) {
+  router.post('/documents', function (request, response) {
     return documentHandler.handlePost(request, response);
   });
   // get documents
-  router.get('/documents/:id', function(request, response) {
+  router.get('/documents/:id', function (request, response) {
     var key = request.params.id.split('.')[0];
     var skipExpire = !!config.documents[key];
     return documentHandler.handleGet(key, response, skipExpire);
@@ -132,15 +140,17 @@ app.use(route(function(router) {
 // Otherwise, try to match static files
 app.use(connect_st({
   path: __dirname + '/static',
-  content: { maxAge: config.staticMaxAge },
+  content: {
+    maxAge: config.staticMaxAge
+  },
   passthrough: true,
   index: false
 }));
 
 // Then we can loop back - and everything else should be a token,
 // so route it back to /
-app.use(route(function(router) {
-  router.get('/:id', function(request, response, next) {
+app.use(route(function (router) {
+  router.get('/:id', function (request, response, next) {
     request.sturl = '/';
     next();
   });
@@ -149,7 +159,9 @@ app.use(route(function(router) {
 // And match index
 app.use(connect_st({
   path: __dirname + '/static',
-  content: { maxAge: config.staticMaxAge },
+  content: {
+    maxAge: config.staticMaxAge
+  },
   index: 'index.html'
 }));
 
