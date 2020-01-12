@@ -12,8 +12,11 @@ var DocumentHandler = require('./lib/document_handler');
 
 // Load the configuration and set some defaults
 var config = JSON.parse(fs.readFileSync('./config.js', 'utf8'));
-config.port = process.env.PORT || config.port || 7777;
-config.host = process.env.HOST || config.host || 'localhost';
+config.port = process.env.HASTE_PORT || config.port || 7777;
+config.host = process.env.HASTE_HOSTNAME || config.host || '0.0.0.0';
+config.storage.type = process.env.STORAGE_TYPE || config.storage.type || 'redis';
+config.storage.host = process.env.STORAGE_HOSTNAME || config.storage.host || 'redis';
+config.storage.port = process.env.STORAGE_PORT || config.storage.port || '6379';
 
 // Set up the logger
 if (config.logging) {

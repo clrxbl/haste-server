@@ -1,6 +1,6 @@
 /*
 
-Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmail.com>
+Orginal Style from https://github.com/sindresorhus/hyper-snazzy
 
 */
 
@@ -8,52 +8,52 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  background: #002b36;
-  color: #839496;
+  background: #282a36;
+  color: #f1f1f0;
 }
 
 .hljs-comment,
 .hljs-quote {
-  color: #586e75;
+  color: #78787e;
 }
 
-/* Solarized Green */
+/* Snazzy Green */
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-addition {
-  color: #859900;
+  color: #5af78e;
 }
 
-/* Solarized Cyan */
+/* Snazzy Cyan */
 .hljs-number,
 .hljs-string,
 .hljs-meta .hljs-meta-string,
 .hljs-literal,
 .hljs-doctag,
 .hljs-regexp {
-  color: #2aa198;
+  color: #57c7ff;
 }
 
-/* Solarized Blue */
+/* Snazzy Blue */
 .hljs-title,
 .hljs-section,
 .hljs-name,
 .hljs-selector-id,
 .hljs-selector-class {
-  color: #268bd2;
+  color: #9aedfe;
 }
 
-/* Solarized Yellow */
+/* Snazzy Yellow */
 .hljs-attribute,
 .hljs-attr,
 .hljs-variable,
 .hljs-template-variable,
 .hljs-class .hljs-title,
 .hljs-type {
-  color: #b58900;
+  color: #f3f99d;
 }
 
-/* Solarized Orange */
+/* Snazzy Magenta */
 .hljs-symbol,
 .hljs-bullet,
 .hljs-subst,
@@ -62,17 +62,17 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 .hljs-selector-attr,
 .hljs-selector-pseudo,
 .hljs-link {
-  color: #cb4b16;
+  color: #ff6ac1;
 }
 
-/* Solarized Red */
+/* Snazzy Red */
 .hljs-built_in,
 .hljs-deletion {
-  color: #dc322f;
+  color: #ff5c57;
 }
 
 .hljs-formula {
-  background: #073642;
+  background: #262626;
 }
 
 .hljs-emphasis {

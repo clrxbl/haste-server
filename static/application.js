@@ -64,7 +64,7 @@ haste_document.prototype.save = function(data, callback) {
     type: 'post',
     data: data,
     dataType: 'json',
-    contentType: 'application/json; charset=utf-8',
+    contentType: 'text/plain; charset=utf-8',
     success: function(res) {
       _this.locked = true;
       _this.key = res.key;
@@ -305,17 +305,6 @@ haste.prototype.configureButtons = function() {
       shortcutDescription: 'control + shift + r',
       action: function() {
         window.location.href = '/raw/' + _this.doc.key;
-      }
-    },
-    {
-      $where: $('#box2 .twitter'),
-      label: 'Twitter',
-      shortcut: function(evt) {
-        return _this.options.twitter && _this.doc.locked && evt.shiftKey && evt.ctrlKey && evt.keyCode == 84;
-      },
-      shortcutDescription: 'control + shift + t',
-      action: function() {
-        window.open('https://twitter.com/share?url=' + encodeURI(window.location.href));
       }
     }
   ];

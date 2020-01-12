@@ -7,17 +7,15 @@
 
   "maxLength": 400000,
 
-  "staticMaxAge": 86400,
+  "staticMaxAge": 2592000,
 
   "recompressStaticAssets": true,
 
-  "logging": [
-    {
-      "level": "verbose",
-      "type": "Console",
-      "colorize": true
-    }
-  ],
+  "logging": [{
+    "level": "verbose",
+    "type": "Console",
+    "colorize": true
+  }],
 
   "keyGenerator": {
     "type": "phonetic"
@@ -33,10 +31,10 @@
   },
 
   "storage": {
-    "type": "memcached",
-    "host": "127.0.0.1",
-    "port": 11211,
-    "expire": 2592000
+    "type": "redis",
+    "host": "172.17.0.2",
+    "port": 6379,
+    "DB": 2
   },
 
   "documents": {

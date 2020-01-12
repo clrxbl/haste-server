@@ -52,20 +52,6 @@ Attempts to generate phonetic keys, similar to `pwgen`
 }
 ```
 
-### Random
-
-Generates a random key
-
-``` json
-{
-  "type": "random",
-  "keyspace": "abcdef"
-}
-```
-
-The _optional_ keySpace argument is a string of acceptable characters
-for the key.
-
 ## Storage
 
 ### Redis
